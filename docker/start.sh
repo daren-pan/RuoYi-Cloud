@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. 启动基础服务（MySQL、Redis、Nacos 等）
-docker-compose up -d ruoyi-mysql ruoyi-redis ruoyi-nacos
+docker compose up -d ruoyi-mysql ruoyi-redis ruoyi-nacos
 
 # 2. 等待 MySQL 就绪（使用 wait-for-it 或直接轮询）
 echo "Waiting for MySQL to be ready..."
@@ -22,4 +22,4 @@ while ! curl.exe -s http://localhost:8848/nacos/actuator/health | grep -q '"stat
 done
 
 # 5. 所有基础服务就绪，再启动其他业务服务
-docker-compose up -d ruoyi-nginx ruoyi-gateway ruoyi-auth ruoyi-modules-system
+docker compose up -d ruoyi-nginx ruoyi-gateway ruoyi-auth ruoyi-modules-system
